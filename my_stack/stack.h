@@ -3,6 +3,9 @@
 
 #pragma once
 
+#include <string>
+
+using namespace std;
 
 namespace testspace {
 	
@@ -10,15 +13,15 @@ namespace testspace {
 	{
 	public:
 		Stack(int in_size);
-		int Push(const int& x);
+		int Push(const string& x);
 		int Size() const;
 		int ContainedNumber();
 		void Pop();
-		int* Front() const;
+		string* Front() const;
 	private:
 		struct Node
 		{
-			int data;
+			string data;
 			Node* next;
 		};
 

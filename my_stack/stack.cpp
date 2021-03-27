@@ -6,7 +6,7 @@
 using namespace  testspace;
 
 	Stack::Stack(int in_size) : root(nullptr), size(in_size), ch(0) {}
-	int Stack::Push(const int& x)
+	int Stack::Push(const string& x)
 	{
 		if (ch < size)
 		{
@@ -39,7 +39,7 @@ using namespace  testspace;
 		}
 	}
 
-	int* Stack::Front() const
+	string* Stack::Front() const
 	{
 		return&root->data;
 	}

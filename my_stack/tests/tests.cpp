@@ -16,34 +16,34 @@ TEST(stack_lib_test, return_size)
 TEST(stack_lib_test, treturn_head_value)
 {
     testspace::Stack stack(3);
-    stack.Push(11);
-    int* head = stack.Front();
-    ASSERT_EQ(*head, 11);
+    stack.Push("aaa");
+    string* head = stack.Front();
+    ASSERT_EQ(*head, "aaa");
 }
 
 TEST(stack_lib_test, Push_Push_Pop_test)
 {
     testspace::Stack stack(3);
-    stack.Push(1);
-    stack.Push(2);
+    stack.Push("aaa");
+    stack.Push("bbb");
     stack.Pop();
-    int* head = stack.Front();
-    ASSERT_EQ(*head, 1);
+    string* head = stack.Front();
+    ASSERT_EQ(*head, "aaa");
 }
 TEST(stack_lib_test, test_for_no_err)
 {
     testspace::Stack stack(3);
-    stack.Push(1);
-    stack.Push(2);
-    int err_flag = stack.Push(3);
+    stack.Push("aaa");
+    stack.Push("bbb");
+    int err_flag = stack.Push("ccc");
     ASSERT_EQ(err_flag, 0);
 }
 TEST(stack_lib_test, test_for_err)
 {
     testspace::Stack stack(2);
-    stack.Push(1);
-    stack.Push(2);
-    int err_flag=stack.Push(3);
+    stack.Push("aaa");
+    stack.Push("bbb");
+    int err_flag=stack.Push("ccc");
     ASSERT_EQ(err_flag, 1);
 }
 
