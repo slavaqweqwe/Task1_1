@@ -1,30 +1,29 @@
-﻿// CMakeProject1.cpp: определяет точку входа для приложения.
-//
-
+﻿
 
 #include "stack.h"
 using namespace  testspace;
 
-	Stack::Stack(int in_size) : root(nullptr), size(in_size), ch(0) {}
-	int Stack::Push(const string& x)
+	Stack::Stack(int in_size) : vect(in_size), ch(0) {}
+	void Stack::Push(const string& x)
 	{
-		if (ch < size)
+		try
 		{
-			ch += 1;
-			Node* newnode = new Node;
-			newnode->data = x;
-			newnode->next = root;
-			root = newnode;
-			return 0;
+			if (ch == vect.size())
+			{
+				throw 1;
+			}
+			vect[ch] = x;
+			++ch;
 		}
-		else {
-			return 1;
+		catch (int i)
+		{
+			// m.b. need 'exit(1);' or 'std::cerr << "stack is full";'
 		}
 
 	}
 	int Stack::Size() const
 	{
-		return size;
+		return vect.size();
 	}
 	int Stack::ContainedNumber()
 	{
@@ -32,15 +31,34 @@ using namespace  testspace;
 	}
 	void Stack::Pop()
 	{
-		if (root != nullptr)
+		try
 		{
-			ch -= 1;
-			root = root->next;
+			if (ch == 0)
+			{
+				throw 2;
+			}
+			--ch;
 		}
-	}
+		catch (int i)
+		{
+			// m.b. need 'exit(2);' or 'std::cerr << "stack is void";'
+		}
 
-	string* Stack::Front() const
+	}
+	string Stack::Front() const
 	{
-		return&root->data;
-	}
+		try
+		{
+			if (ch == 0)
+			{
+				throw 3;
+			}
+			return vect[ch - 1];
+		}
+		catch (int i)
+		{
+			// m.b. need 'exit(3);' or 'std::cerr << "stack is void";'
+			return "stack is void";
+		}
 
+	}
