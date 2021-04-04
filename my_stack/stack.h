@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include <string>
-#include <vector>
+#include <iostream>
 using namespace std;
 
 namespace testspace {
@@ -10,15 +10,18 @@ namespace testspace {
 	class Stack
 	{
 	public:
-		Stack(int in_size);
+		explicit Stack(size_t in_size);
+		Stack::~Stack();
 		void Push(const string& x);
-		int Size() const;
-		int ContainedNumber();
+		size_t Size() const;
+		size_t ContainedNumber();
 		void Pop();
-		string Front() const;
+		string* Front() ;
 	private:
 
-		int ch;
-		vector<string> vect;
+
+		size_t ch;
+		size_t array_size;
+		string* array;
 	};
 }
