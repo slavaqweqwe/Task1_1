@@ -3,16 +3,16 @@
 #include "stack.h"
 using namespace  testspace;
 
-	Stack::Stack(size_t in_size) :  array ( new std::string[in_size]), array_size(in_size), ch(0) {}
+	Stack::Stack(size_t in_size) :  array ( new std::string[in_size]), array_size(in_size), current_size(0) {}
 	Stack::~Stack() { delete[] array; }
-	void Stack::Push(const string& x)
+	void Stack::Push(std::string& in_str)
 	{
-		if (ch == array_size)
+		if (current_size == array_size)
 		{
 			throw std::underflow_error("Stack is full");
 		}
-		array[ch] = x;
-		++ch;
+		array[current_size] = in_str;
+		++current_size;
 
 	}
 	size_t Stack::Size() const
@@ -21,20 +21,20 @@ using namespace  testspace;
 	}
 	size_t Stack::ContainedNumber()
 	{
-		return ch;
+		return current_size;
 	}
 	void Stack::Pop()
 	{
-		if (ch == 0)
+		if (current_size == 0)
 		{
 			throw std::underflow_error ("Stack is empty");
 		}
-		--ch;
+		--current_size;
 
 	}
-	string* Stack::Front() 
+	std::string* Stack::Front() 
 	{
-		if (ch == 0)
+		if (current_size == 0)
 		{
 			throw std::underflow_error("Stack is empty");
 		}

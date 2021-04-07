@@ -13,33 +13,38 @@ TEST(stack_lib_test, return_size)
 TEST(stack_lib_test, treturn_head_value)
 {
     testspace::Stack stack(3);
-    stack.Push("aaa");
-    string* head = stack.Front();
-    ASSERT_EQ(*head, "aaa");
+    std::string str = "aaa";
+    stack.Push(str);
+    std::string* head = stack.Front();
+    ASSERT_EQ(*head, str);
 }
 
 TEST(stack_lib_test, Push_Push_Pop_test)
 {
     testspace::Stack stack(3);
-    stack.Push("aaa");
-    stack.Push("bbb");
+    std::string str1 = "aaa";
+    stack.Push(str1);
+    std::string str2 = "bbb";
+    stack.Push(str2);
     stack.Pop();
-    string* head = stack.Front();
-    ASSERT_EQ(*head, "aaa");
+    std::string* head = stack.Front();
+    ASSERT_EQ(*head, str1);
 }
 
 TEST(stack_lib_test, test_for_err1)
 {
     testspace::Stack stack(2);
-    stack.Push("aaa");
-    stack.Push("bbb");
-    
+    std::string str1 = "aaa";
+    stack.Push(str1);
+    std::string str2 = "bbb";
+    stack.Push(str2);
+    std::string str3 = "ccc";
     try
     {
-        stack.Push("ccc");
+        stack.Push(str3);
 
     }
-    catch (exception &e)
+    catch (std::exception &e)
     {
 
         ASSERT_STREQ(e.what(), "Stack is full");
@@ -57,7 +62,7 @@ TEST(stack_lib_test, test_for_err2)
         stack.Pop();
 
     }
-    catch (exception& e)
+    catch (std::exception& e)
     {
 
         ASSERT_STREQ(e.what(), "Stack is empty");

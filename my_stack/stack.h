@@ -2,7 +2,7 @@
 
 #include <string>
 #include <iostream>
-using namespace std;
+
 
 namespace testspace {
 	
@@ -12,16 +12,16 @@ namespace testspace {
 	public:
 		explicit Stack(size_t in_size);
 		Stack::~Stack();
-		void Push(const string& x);
+		void Push(std::string& in_str);
 		size_t Size() const;
 		size_t ContainedNumber();
 		void Pop();
-		string* Front() ;
+		std::string* Front() ;
 	private:
 
 
-		size_t ch;
+		size_t current_size;
 		size_t array_size;
-		string* array;
+		std::string* array;
 	};
 }
