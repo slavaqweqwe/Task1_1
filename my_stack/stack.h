@@ -12,7 +12,7 @@ namespace testspace {
 	public:
 		explicit Stack(size_t in_size);
 		Stack::~Stack();
-		void Push(std::string& in_str);
+		void Push(std::string in_str);
 		size_t Size() const;
 		size_t ContainedNumber();
 		void Pop();

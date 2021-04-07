@@ -5,13 +5,13 @@ using namespace  testspace;
 
 	Stack::Stack(size_t in_size) :  array ( new std::string[in_size]), array_size(in_size), current_size(0) {}
 	Stack::~Stack() { delete[] array; }
-	void Stack::Push(std::string& in_str)
+	void Stack::Push(std::string in_str)
 	{
 		if (current_size == array_size)
 		{
 			throw std::underflow_error("Stack is full");
 		}
-		array[current_size] = in_str;
+		array[current_size] = std::move(in_str);
 		++current_size;
 
 	}
